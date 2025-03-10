@@ -1,6 +1,13 @@
 const express = require("express");
 const app = express();
 
+app.use((req, res, next) => {
+  let method = req.method;
+  let url = req.url;
+  console.log(`${method} request made to ${url}`);
+  next();
+});
+
 app.get("/products", (req, res) => {
   res.send(`<h1>Here is the list of all products.</h1>`);
 });
@@ -21,8 +28,8 @@ app.get("*", (req, res) => {
   res.status(404).send(`<h1>404 - Page Not Found</h1>`);
 });
 
-app.listen(3000, () => {
+app.listen(4000, () => {
   console.log(
-    "Server is up and running on port 3000! Ready to handle requests."
+    "Server is up and running on port 4000! Ready to handle requests."
   );
 });
