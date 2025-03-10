@@ -1,14 +1,13 @@
 const express = require("express");
 const app = express();
 
-app.use((req, res, next) => {
-  console.log("This is middleware 1");
+app.use("/welcome", (req, res, next) => {
+  req.user = "Guest";
   next();
 });
 
-app.use((req, res, next) => {
-  console.log("This is middleware 2");
-  res.send("<h1>This is middleware 2</h1>");
+app.get("/welcome", (req, res) => {
+  res.send(`<h1>Welcome ${req.user}</h1>`);
 });
 
 app.listen(3000, () => {
