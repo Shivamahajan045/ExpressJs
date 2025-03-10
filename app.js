@@ -1,8 +1,12 @@
 const express = require("express");
 const productsRouter = require("./routes/products");
 const categoriesRouter = require("./routes/categories");
+const booksRouter = require("./routes/books");
 
 const app = express();
+
+// Middleware to parse JSON requests
+app.use(express.json());
 
 app.use((req, res, next) => {
   let method = req.method;
@@ -13,6 +17,7 @@ app.use((req, res, next) => {
 
 app.use("/products", productsRouter);
 app.use("/categories", categoriesRouter);
+app.use("/books", booksRouter);
 
 app.get("*", (req, res) => {
   res.status(404).send(`<h1>404 - Page Not Found</h1>`);
