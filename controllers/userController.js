@@ -7,7 +7,7 @@ const createUser = (req, res) => {
 };
 
 const getUsersById = (req, res) => {
-  let { id } = req.params;
+  const { id } = req.params;
   res.send(`<h1>Fetching user with ID: ${id}</h1>`);
 };
 
