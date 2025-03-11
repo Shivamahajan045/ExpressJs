@@ -4,6 +4,9 @@ const productRouter = require("./routes/productRoutes");
 const cartRouter = require("./routes/cartRoutes");
 const app = express();
 
+//to serve static files inside public folder
+app.use(express.static("public"));
+
 //middleware to parse json
 app.use(express.json());
 

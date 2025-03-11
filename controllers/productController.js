@@ -9,7 +9,10 @@ const getProductsById = (req, res) => {
 };
 
 const postProducts = (req, res) => {
-  res.send(`<h1>Adding a new product</h1>`);
+  const { productName } = req.body;
+  res.json({
+    value: productName,
+  });
 };
 
 module.exports = {
